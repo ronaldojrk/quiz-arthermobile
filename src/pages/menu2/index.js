@@ -10,6 +10,12 @@ import logomission from '../../assets/missao.png';
 import logotitle from '../../assets/titulos.png';
 import logoperfil from '../../assets/perfil.png';
 
+import logoquestao from '../../assets/questao.png';
+import logoquiz from '../../assets/quiz.png';
+import logorank from '../../assets/rank.png';
+import logorelatorio from '../../assets/relatorio.png';
+import logodesconectar from '../../assets/desconectar.png';
+
 import styles from './styles';
 
 export default function menu() {
@@ -68,7 +74,7 @@ export default function menu() {
     <View style={styles.container}>
       <Image source={logoImg} />
       <View style={styles.top}>
-        <Text style={styles.cash}>Bem-vindo, {usertop.name}</Text>
+        <Text style={styles.cash}>Bem-vindo,{usertop.name}!</Text>
 
 
       </View>
@@ -89,7 +95,7 @@ export default function menu() {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
           >
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={styles.cardItem}
               onPress={() => navigateTotitulo(usertop)}
             >
@@ -102,6 +108,37 @@ export default function menu() {
             >
               <Text style={styles.cardText}>missão</Text>
               <Image source={logomission} />
+            </TouchableOpacity>*/}
+
+
+
+            <TouchableOpacity
+              style={styles.cardItem}
+              onPress={() => navigateToQuiz(usertop)}
+            >
+              <Text style={styles.cardText}>Quiz</Text>
+              <Image source={logoquiz} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.cardItem}
+              onPress={() => navigateToQueshome(usertop)}
+            >
+              <Text style={styles.cardText}>Questão</Text>
+              <Image source={logoquestao} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.cardItem}
+              onPress={() => navigateToRel(usertop)}
+            >
+              <Text style={styles.cardText}>Relatorio</Text>
+              <Image source={logorelatorio} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.cardItem}
+              onPress={() => navigateToRank(usertop)}
+            >
+              <Text style={styles.cardText}>Rank Global</Text>
+              <Image source={logorank} />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.cardItem}
@@ -110,37 +147,12 @@ export default function menu() {
               <Text style={styles.cardText}>Perfil</Text>
               <Image source={logoperfil} />
             </TouchableOpacity>
-
-
-            <TouchableOpacity
-              style={styles.cardItem}
-              onPress={() => navigateToQuiz(usertop)}
-            >
-              <Text style={styles.cardText}>Quiz</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.cardItem}
-              onPress={() => navigateToQueshome(usertop)}
-            >
-              <Text style={styles.cardText}>Questão</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.cardItem}
-              onPress={() => navigateToRel(usertop)}
-            >
-              <Text style={styles.cardText}>relatorio</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.cardItem}
-              onPress={() => navigateToRank(usertop)}
-            >
-              <Text style={styles.cardText}>Rank Global</Text>
-            </TouchableOpacity>
             <TouchableOpacity
               style={styles.cardItem}
               onPress={() => navigateToDes()}
             >
-              <Text style={styles.cardText}>desconectar</Text>
+              <Text style={styles.cardText}>Desconectar</Text>
+              <Image source={logodesconectar} />
             </TouchableOpacity>
 
 

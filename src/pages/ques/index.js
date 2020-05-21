@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, TextInput, Image, Text, TouchableOpacity, Alert, Modal, Animated, ScrollView } from 'react-native';
+import { View, TextInput, Image, Text, TouchableOpacity, Alert, Modal, Animated, ScrollView, ActivityIndicator } from 'react-native';
 
 
 import logoImg from '../../assets/meio.png';
@@ -37,13 +37,13 @@ export default function ques() {
     const alternativetrue = al;
 
 
-    console.log(usertop.id);
+    /*console.log(usertop.id);
     console.log(enunciated);
     console.log(alternativetrue);
     console.log(alternativea);
     console.log(alternativeb);
     console.log(alternativec);
-    console.log(timelimite);
+    console.log(timelimite);*/
     //console.log(email);
 
     console.log('---------------------------');
@@ -54,7 +54,7 @@ export default function ques() {
       if (responsequestion.status === 200) {
         //setModalVisible(!modalVisible);
         console.log('deu sucesso')
-        alert('questão registrada com sucesso');
+        alert('Questão registrada com sucesso');
         //setUsertop(responsequestion.data.user.id);
 
         setVisible(!visible);
@@ -64,7 +64,7 @@ export default function ques() {
       }
     } catch (error) {
       console.log('deu errado')
-      alert('erro na criação de questão');
+      alert('Erro na criação de questão');
 
       // setModalVisible(!modalVisible);
 
@@ -149,7 +149,7 @@ export default function ques() {
       // alert('vamos')
       setModalVisible(!modalVisible);
     } else {
-      alert('preenchar todos os dados')
+      alert('Preenchar todos os dados')
       // setModalVisible1(!modalVisible1);
 
     }
@@ -160,7 +160,7 @@ export default function ques() {
     <View style={styles.container}>
       <Modal
         animationType="fade"
-        transparent={false}
+        transparent={true}
         visible={visible}
         onShow={() => { }}
         style={styles.modalcor}
@@ -168,7 +168,8 @@ export default function ques() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Carregando</Text>
+            <Text style={styles.modalText}>Carregando...</Text>
+            <ActivityIndicator size="large" color="#6c63ff" />
 
           </View>
         </View>
@@ -179,8 +180,8 @@ export default function ques() {
 
 
       <Modal
-        animationType="slide"
-        transparent={false}
+        animationType="fade"
+        transparent={true}
         visible={modalVisible}
         onRequestClose={() => { Alert.alert("Modal has been closed."); }}
         onShow={() => { zera() }}
@@ -188,7 +189,7 @@ export default function ques() {
 
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>marque a alternativa certa</Text>
+            <Text style={styles.modalText}>Marque a alternativa certa.</Text>
             <View style={styles.item} >
               <CheckBox checked={select === 1} color="#6c63ff" onPress={() => setSelect(1)} />
               <Text style={
@@ -222,7 +223,7 @@ export default function ques() {
 
 
             <TouchableOpacity style={styles.action} onPress={() => colocartruefinal(select)}>
-              <Text style={styles.actionText}>marcar</Text>
+              <Text style={styles.actionText}>Marcar</Text>
             </TouchableOpacity>
 
           </View>
@@ -241,7 +242,7 @@ export default function ques() {
         <View style={styles.actions}>
 
           <TouchableOpacity style={styles.action} onPress={() => tudoDiferentedenull()}>
-            <Text style={styles.actionText}>criar</Text>
+            <Text style={styles.actionText}>Criar</Text>
           </TouchableOpacity>
 
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, TextInput, Image, Text, TouchableOpacity, Alert, Modal, Animated, TouchableHighlight } from 'react-native';
+import { View, TextInput, Image, Text, TouchableOpacity, Alert, Modal, Animated, TouchableHighlight, ActivityIndicator } from 'react-native';
 
 
 import logoImg from '../../assets/meio.png';
@@ -16,6 +16,7 @@ import api from '../../services/api';
 export default function menu() {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
+  var [senha, setSenha] = useState(false);
   const [visible, setvisible] = useState(false);
   var [email, setEmail] = useState('');
   var [usertop, setUsertop] = useState([]);
@@ -59,6 +60,10 @@ export default function menu() {
 
 
   }
+  function colocarsenha() {
+
+
+  }
 
 
   function navigateToQuiz(user) {
@@ -92,7 +97,7 @@ export default function menu() {
     <View style={styles.container}>
       <Modal
         animationType="fade"
-        transparent={false}
+        transparent={true}
         visible={modalVisible}
         onShow={() => { logando() }}
         style={styles.modalcor}
@@ -100,7 +105,8 @@ export default function menu() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Carregando</Text>
+            <Text style={styles.modalText}>Carregando...</Text>
+            <ActivityIndicator size="large" color="#6c63ff" />
 
           </View>
         </View>
@@ -153,6 +159,7 @@ export default function menu() {
             underlineColorAndroid="transparent"
             placeholder="digite seu login"
             placeholderTextColor="white"
+            keyboardType="email-address"
             style={styles.logininput}
             onChangeText={(val) => setEmail(val)} />
         </View>
@@ -164,9 +171,16 @@ export default function menu() {
             underlineColorAndroid="transparent"
             placeholder="digite sua senha"
             placeholderTextColor="white"
+            keyboardType={senha ? "visible-password" : "password"}
             style={styles.logininput}
             //maxLength={4}
             onChangeText={(val) => setPassword(val)} />
+
+          <TouchableOpacity
+            onPress={() => setSenha(!senha)}>
+
+            <Feather name={senha ? "eye" : "eye-off"} size={20} color="#fff" />
+          </TouchableOpacity>
         </View>
 
 

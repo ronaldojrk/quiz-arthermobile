@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, FlatList, Image, Text, TouchableOpacity, Alert, Modal } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, Alert, Modal, ActivityIndicator } from 'react-native';
 
 
 import api from '../../services/api';
@@ -55,7 +55,7 @@ export default function queshome() {
     <View style={styles.container}>
       <Modal
         animationType="fade"
-        transparent={false}
+        transparent={true}
         visible={modalVisible}
         onShow={() => { loadQuestion() }}
         style={styles.modalcor}
@@ -63,7 +63,8 @@ export default function queshome() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Carregando</Text>
+            <Text style={styles.modalText}>Carregando...</Text>
+            <ActivityIndicator size="large" color="#6c63ff" />
 
           </View>
         </View>
@@ -123,8 +124,8 @@ export default function queshome() {
             <Text style={styles.quizValue}>{question.alternativec}</Text>
             <Text style={styles.quizProperty}>alternative certa :</Text>
             <Text style={styles.quizValue}>{question.alternativetrue}</Text>
-            <Text style={styles.quizProperty}>tempo da questão :</Text>
-            <Text style={styles.quizValue}>{question.timelimite}</Text>
+            { /*<Text style={styles.quizProperty}>tempo da questão :</Text>
+            <Text style={styles.quizValue}>{question.timelimite}</Text>*/}
 
           </View>
 

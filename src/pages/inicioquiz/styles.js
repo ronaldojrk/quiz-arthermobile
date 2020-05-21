@@ -157,8 +157,7 @@ export default StyleSheet.create({
   },
   actions: {
     marginTop: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    alignItems: 'center',
   },
   action: {
     backgroundColor: '#6c63ff',

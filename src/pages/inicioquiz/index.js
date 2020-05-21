@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Modal, Alert } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Modal, Alert, ActivityIndicator } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 
@@ -72,15 +72,15 @@ export default function inicioquiz() {
     const test1 = route.params.test;
     //setModalVisible(!modalVisible);
     const response = await api.get(`recordistask/${user1.id}/${test1.id}`);
-    console.log(response.data)
+    //console.log(response.data)
     if (response.data.message == 'nao pode fazer') {
       setModalVisible(!modalVisible);
       navigateToQuiz(user1);
-      alert('voce ja fez essa atividade');
+      alert('Voce ja fez essa atividade.');
 
     } else {
       setModalVisible(!modalVisible);
-      alert('voce pode fazer essa atividade');
+      alert('Voce pode fazer essa atividade.');
 
     }
     //console.log(response.data);
@@ -101,7 +101,7 @@ export default function inicioquiz() {
 
       <Modal
         animationType="fade"
-        transparent={false}
+        transparent={true}
         visible={modalVisible}
         onShow={() => { loadQuiz() }}
         style={styles.modalcor}
@@ -109,7 +109,8 @@ export default function inicioquiz() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Carregando</Text>
+            <Text style={styles.modalText}>Carregando...</Text>
+            <ActivityIndicator size="large" color="#6c63ff" />
 
           </View>
         </View>
@@ -127,16 +128,19 @@ export default function inicioquiz() {
 
       <View style={styles.question}>
 
-        <Text style={[styles.questionProperty, { marginTop: 0 }]}>instruções para fazer a atividade:</Text>
-        <Text style={styles.questionValue}>{console.log(test)}</Text>
+        <Text style={[styles.questionProperty, { marginTop: 0 }]}>Instruções para fazer a atividade:</Text>
+        <Text style={styles.questionValue}>Responda as questões corretamente,Existe apenas uma alternativa corretar por questão.</Text>
+
+
+      </View>
+
+      <View style={styles.actions}>
 
         <TouchableOpacity style={styles.action} onPress={() => navigateToQuestions(question, user, test)}>
           <Text style={styles.actionText}>Iniciar</Text>
 
         </TouchableOpacity>
-
       </View>
-
 
 
 

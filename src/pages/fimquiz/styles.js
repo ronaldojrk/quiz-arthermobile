@@ -43,6 +43,13 @@ export default StyleSheet.create({
     backgroundColor: '#FFF',
     marginBottom: 10,
   },
+  pontos: {
+    alignItems: 'center',
+    padding: 24,
+    borderRadius: 8,
+    backgroundColor: '#6c63ff',
+    marginBottom: 10,
+  },
 
   questionProperty: {
     alignItems: 'center',

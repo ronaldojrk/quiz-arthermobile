@@ -15,7 +15,7 @@ import CountDown from 'react-native-countdown-component';
 export default function questions() {
   const navigation = useNavigation();
   var [select, setSelect] = useState([0]);
-  var [relogio1, setRelogio1] = useState([0]);
+  var [relogio1, setRelogio1] = useState([60]);
   const [modalVisible, setModalVisible] = useState(false);
   const [visible, setvisible] = useState(false);
 
@@ -48,14 +48,14 @@ export default function questions() {
       user: user,
       test: test,
     }
-    console.log(tudo);
+    //console.log(tudo);
     navigation.navigate('fimquiz', tudo);
   }
 
 
 
   var [num, setNum] = useState([0]);
-  const [istrue, setIstrue] = useState(true);
+  var [istrue, setIstrue] = useState(true);
   var num2 = 0;
   var relogio;
   var tempo2;
@@ -82,12 +82,13 @@ export default function questions() {
       setModalVisible(!modalVisible);
       setIstrue(!istrue);
     }
+    setRelogio1(60);
     if (num < question.length - 1) {
       console.log('------------ testando')
-      console.log('antes e depois');
-      console.log(' num->' + num);
-      console.log('conta ' + contacerto)
-      console.log(' true/false->' + antesAcerto);
+      /* console.log('antes e depois');
+       console.log(' num->' + num);
+       console.log('conta ' + contacerto)
+       console.log(' true/false->' + antesAcerto);*/
       /* console.log(' select->'+select);
         console.log('conta a'+contacerto)
         console.log(' true/false->'+antesAcerto);
@@ -115,19 +116,26 @@ export default function questions() {
             setAcertos(acer);
             if (antesAcerto) {
               if (contacerto < 2 && contacerto > 0) {
-                let p = po + 20;
+                let p = po + 120;
                 setPontos(p);
 
               }
               if (contacerto < 4 && contacerto >= 2) {
-                let p = po + 30;
+                let p = po + 130;
                 setPontos(p);
 
               }
 
 
               if (contacerto < 6 && contacerto >= 4) {
-                let p = po + 40;
+                let p = po + 140;
+                setPontos(p);
+
+
+
+              }
+              if (contacerto >= 6) {
+                let p = po + 200;
                 setPontos(p);
 
 
@@ -140,7 +148,7 @@ export default function questions() {
 
 
             } else {
-              let p = po + 10;
+              let p = po + 100;
               setPontos(p)
               setAntesAcerto(!antesAcerto)
               let cont = contacerto + 1;
@@ -148,6 +156,9 @@ export default function questions() {
             }
 
           } else {
+
+            let cont = 0;
+            setContacerto(cont)
 
           }
 
@@ -159,19 +170,26 @@ export default function questions() {
             setAcertos(acer);
             if (antesAcerto) {
               if (contacerto < 2 && contacerto > 0) {
-                let p = po + 20;
+                let p = po + 120;
                 setPontos(p);
 
               }
               if (contacerto < 4 && contacerto >= 2) {
-                let p = po + 30;
+                let p = po + 130;
                 setPontos(p);
 
               }
 
 
               if (contacerto < 6 && contacerto >= 4) {
-                let p = po + 40;
+                let p = po + 140;
+                setPontos(p);
+
+
+
+              }
+              if (contacerto >= 6) {
+                let p = po + 200;
                 setPontos(p);
 
 
@@ -184,7 +202,7 @@ export default function questions() {
 
 
             } else {
-              let p = po + 10;
+              let p = po + 100;
               setPontos(p)
               setAntesAcerto(!antesAcerto)
               let cont = contacerto + 1;
@@ -192,6 +210,9 @@ export default function questions() {
             }
 
           } else {
+
+            let cont = 0;
+            setContacerto(cont)
 
           }
 
@@ -202,19 +223,26 @@ export default function questions() {
             setAcertos(acer);
             if (antesAcerto) {
               if (contacerto < 2 && contacerto > 0) {
-                let p = po + 20;
+                let p = po + 120;
                 setPontos(p);
 
               }
               if (contacerto < 4 && contacerto >= 2) {
-                let p = po + 30;
+                let p = po + 130;
                 setPontos(p);
 
               }
 
 
               if (contacerto < 6 && contacerto >= 4) {
-                let p = po + 40;
+                let p = po + 140;
+                setPontos(p);
+
+
+
+              }
+              if (contacerto >= 6) {
+                let p = po + 200;
                 setPontos(p);
 
 
@@ -227,7 +255,7 @@ export default function questions() {
 
 
             } else {
-              let p = po + 10;
+              let p = po + 100;
               setPontos(p)
               setAntesAcerto(!antesAcerto)
               let cont = contacerto + 1;
@@ -235,6 +263,9 @@ export default function questions() {
             }
 
           } else {
+
+            let cont = 0;
+            setContacerto(cont)
 
           }
 
@@ -271,10 +302,10 @@ export default function questions() {
       //iniciarRelogio();
     } else {
       console.log('------------ testando')
-      console.log('antes e depois');
-      console.log(' num->' + num);
-      console.log('conta a' + contacerto)
-      console.log(' true/false->' + antesAcerto);
+      /* console.log('antes e depois');
+       console.log(' num->' + num);
+       console.log('conta a' + contacerto)
+       console.log(' true/false->' + antesAcerto);*/
       /* console.log(' select->'+select);
         console.log('conta a'+contacerto)
         console.log(' true/false->'+antesAcerto);
@@ -302,19 +333,26 @@ export default function questions() {
             setAcertos(acer);
             if (antesAcerto) {
               if (contacerto < 2 && contacerto > 0) {
-                let p = po + 20;
+                let p = po + 120;
                 setPontos(p);
 
               }
               if (contacerto < 4 && contacerto >= 2) {
-                let p = po + 30;
+                let p = po + 130;
                 setPontos(p);
 
               }
 
 
               if (contacerto < 6 && contacerto >= 4) {
-                let p = po + 40;
+                let p = po + 140;
+                setPontos(p);
+
+
+
+              }
+              if (contacerto >= 6) {
+                let p = po + 200;
                 setPontos(p);
 
 
@@ -327,7 +365,7 @@ export default function questions() {
 
 
             } else {
-              let p = po + 10;
+              let p = po + 100;
               setPontos(p)
               setAntesAcerto(!antesAcerto)
               let cont = contacerto + 1;
@@ -335,6 +373,9 @@ export default function questions() {
             }
 
           } else {
+
+            let cont = 0;
+            setContacerto(cont)
 
           }
 
@@ -346,19 +387,26 @@ export default function questions() {
             setAcertos(acer);
             if (antesAcerto) {
               if (contacerto < 2 && contacerto > 0) {
-                let p = po + 20;
+                let p = po + 120;
                 setPontos(p);
 
               }
               if (contacerto < 4 && contacerto >= 2) {
-                let p = po + 30;
+                let p = po + 130;
                 setPontos(p);
 
               }
 
 
               if (contacerto < 6 && contacerto >= 4) {
-                let p = po + 40;
+                let p = po + 140;
+                setPontos(p);
+
+
+
+              }
+              if (contacerto >= 6) {
+                let p = po + 200;
                 setPontos(p);
 
 
@@ -371,7 +419,7 @@ export default function questions() {
 
 
             } else {
-              let p = po + 10;
+              let p = po + 100;
               setPontos(p)
               setAntesAcerto(!antesAcerto)
               let cont = contacerto + 1;
@@ -379,6 +427,9 @@ export default function questions() {
             }
 
           } else {
+
+            let cont = 0;
+            setContacerto(cont)
 
           }
 
@@ -389,19 +440,26 @@ export default function questions() {
             setAcertos(acer);
             if (antesAcerto) {
               if (contacerto < 2 && contacerto > 0) {
-                let p = po + 20;
+                let p = po + 120;
                 setPontos(p);
 
               }
               if (contacerto < 4 && contacerto >= 2) {
-                let p = po + 30;
+                let p = po + 130;
                 setPontos(p);
 
               }
 
 
               if (contacerto < 6 && contacerto > 4) {
-                let p = po + 40;
+                let p = po + 140;
+                setPontos(p);
+
+
+
+              }
+              if (contacerto >= 6) {
+                let p = po + 200;
                 setPontos(p);
 
 
@@ -414,7 +472,7 @@ export default function questions() {
 
 
             } else {
-              let p = po + 10;
+              let p = po + 100;
               setPontos(p)
               setAntesAcerto(!antesAcerto)
               let cont = contacerto + 1;
@@ -422,6 +480,9 @@ export default function questions() {
             }
 
           } else {
+
+            let cont = 0;
+            setContacerto(cont)
 
           }
 
@@ -435,10 +496,10 @@ export default function questions() {
 
       setSelect(0);
 
-      console.log('cabou agora');
+      console.log('terminou o quiz');
       /*console.log(antesAcerto);*/
-      console.log(acerto);
-      console.log(pontos);
+      /* console.log(acerto);
+       console.log(pontos);*/
       setIstrue(istrue);
       setvisible(!visible);
       //navigateToQuestions();
@@ -544,7 +605,7 @@ export default function questions() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Modal
-          animationType="slide"
+          animationType="fade"
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => { Alert.alert("Modal has been closed."); }}
@@ -563,7 +624,7 @@ export default function questions() {
         </Modal>
 
         <Modal
-          animationType="slide"
+          animationType="fade"
           transparent={true}
           visible={visible}
           onRequestClose={() => { Alert.alert("Modal has been closed."); }}
@@ -582,7 +643,8 @@ export default function questions() {
           </View>
         </Modal>
         <CountDown
-          until={question[parseInt(num)].timelimite}
+          id={question[[parseInt(num)]].enunciated}
+          until={relogio1}
           onPress={() => alert('hello')}
           running={istrue}
           size={12}
@@ -595,10 +657,12 @@ export default function questions() {
 
         />
 
+        {/*console.log(question[parseInt(num)].timelimite)*/}
+
 
 
         <Text style={styles.headerText}>
-          question: <Text style={styles.headerTextBold}>{parseInt(num) + 1}/{question.length}</Text>
+          questão: <Text style={styles.headerTextBold}>{parseInt(num) + 1}/{question.length}</Text>
         </Text>
 
 
@@ -663,9 +727,9 @@ export default function questions() {
 
 
 
-      <Text style={styles.headerText}>
+      {/* <Text style={styles.headerText}>
         acerto{acerto} pontos {pontos} cont {contacerto}
-      </Text>
+      </Text>     */}
 
 
 

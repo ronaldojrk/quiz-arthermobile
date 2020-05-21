@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Modal, } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Modal, ActivityIndicator } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 
@@ -65,8 +65,8 @@ export default function fimquiz() {
   }*/
   async function test(cash, user_id) {
     //const cash=user.pontos;
-    console.log(cash)
-    console.log(user_id)
+    /*console.log(cash)
+    console.log(user_id)*/
     try {
       //const responsecash =await api.put(`addcash/${user_id}`,{cash});
       const responsecash = await api.post(`addcash/${user_id}`, { cash: cash });
@@ -79,8 +79,8 @@ export default function fimquiz() {
 
     } catch (error) {
       setvisible(!visible);
-      console.log('nao foi foi')
-      console.log(error)
+      console.log('deu erro')
+      // console.log(error)
 
     }
   }
@@ -96,7 +96,7 @@ export default function fimquiz() {
     try {
 
       const responsequestion = await api.post(`recordcreate/${user.user.id}/${user.test.id}`, { pontos, acerto, totalquest });
-      console.log(responsequestion.data);
+      ///console.log(responsequestion.data);
       setRecods(responsequestion.data);
       console.log('test')
       //if(responsequestion.status==200){
@@ -132,7 +132,7 @@ export default function fimquiz() {
 
       </View>
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={visible}
         onRequestClose={() => { Alert.alert("Modal has been closed."); }}
@@ -142,6 +142,7 @@ export default function fimquiz() {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>finalizando aguarde...</Text>
+            <ActivityIndicator size="large" color="#6c63ff" />
 
 
 
@@ -153,12 +154,29 @@ export default function fimquiz() {
 
       <View style={styles.question}>
 
-        <Text style={[styles.questionProperty, { marginTop: 0 }]}>instruções para fazer a atividade:</Text>
-        <Text style={styles.questionValue}>{console.log('v---------------------')}</Text>
+
+
+        <View style={styles.pontos}>
+
+          <Text style={[styles.questionProperty, { marginEnd: 10 }]}>Voce teve um acerto de : </Text>
+          <Text style={[{
+            fontSize: 24,
+            color: '#fff',
+            fontWeight: 'bold'
+          }]}> {user.acerto}/{user.total} </Text>
+          <Text style={[styles.questionProperty, { marginEnd: 10 }]}>Voce teve  uma pontuação de : </Text>
+          <Text style={[{
+            fontSize: 24,
+            color: '#fff',
+            fontWeight: 'bold'
+          }]}> {user.pontos} cash </Text>
+
+        </View>
+
 
 
         <TouchableOpacity style={styles.action} onPress={() => setvisible(!visible)}>
-                                         <Text style={styles.actionText}>finalizar quiz</Text>
+          <Text style={styles.actionText}>Finalizar</Text>
 
         </TouchableOpacity>
 

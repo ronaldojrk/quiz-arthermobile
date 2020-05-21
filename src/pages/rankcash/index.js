@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, FlatList, Image, Text, TouchableOpacity, Alert, Modal } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, Alert, Modal, ActivityIndicator } from 'react-native';
 
 
 import api from '../../services/api';
@@ -18,13 +18,14 @@ export default function rankcash() {
   const route = useRoute();
   const [user, setUser] = useState([]);
   const [question, setQuestion] = useState([]);
+  //const [rankin, setrankin] = useState([1]);
   var usertop = route.params.user;
   const [modalVisible, setModalVisible] = useState(true);
 
   const navigation = useNavigation();
 
 
-
+  var rankin = 1;
 
 
   function navigateToQuestions(fist) {
@@ -38,7 +39,7 @@ export default function rankcash() {
   async function loadQuiz() {
 
     const response = await api.get('rankcash');
-    console.log(response.data);
+    //console.log(response.data);
     setUser(response.data);
     setModalVisible(!modalVisible);
 
@@ -63,7 +64,7 @@ export default function rankcash() {
     <View style={styles.container}>
       <Modal
         animationType="fade"
-        transparent={false}
+        transparent={true}
         visible={modalVisible}
         onShow={() => { loadQuiz() }}
         style={styles.modalcor}
@@ -71,7 +72,8 @@ export default function rankcash() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Carregando</Text>
+            <Text style={styles.modalText}>Carregando...</Text>
+            <ActivityIndicator size="large" color="#6c63ff" />
 
           </View>
         </View>

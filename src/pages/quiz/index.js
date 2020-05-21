@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, FlatList, Image, Text, TouchableOpacity, Alert, Modal } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, Alert, Modal, ActivityIndicator } from 'react-native';
 
 
 import api from '../../services/api';
@@ -26,7 +26,7 @@ export default function quiz() {
   async function toQuestions(test) {
 
     if (test.user_id == usertop.id) {
-      alert('voce nao pode fazer essa atividade por quer vc criou')
+      alert('Voce não pode fazer essa atividade porque vc criou. ')
     } else {
       try {
         console.log('teste-começa=------------');
@@ -114,7 +114,7 @@ export default function quiz() {
 
       <Modal
         animationType="fade"
-        transparent={false}
+        transparent={true}
         visible={modalVisible}
         onShow={() => { loadQuiz() }}
         style={styles.modalcor}
@@ -122,7 +122,8 @@ export default function quiz() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Carregando</Text>
+            <Text style={styles.modalText}>Carregando...</Text>
+            <ActivityIndicator size="large" color="#6c63ff" />
 
           </View>
         </View>
@@ -140,7 +141,7 @@ export default function quiz() {
         <View style={styles.actions}>
 
           <TouchableOpacity style={styles.action} onPress={() => navigateToCreateTask(usertop)}>
-            <Text style={styles.actionText}>criar</Text>
+            <Text style={styles.actionText}>Criar</Text>
           </TouchableOpacity>
 
 
@@ -180,7 +181,7 @@ export default function quiz() {
               color: quiz.user_id == usertop.id ? "#fff" : "#737380",
             }]}>{quiz.title}</Text>
 
-            <Text style={styles.quizProperty}>descricao:</Text>
+            <Text style={styles.quizProperty}>Descricão:</Text>
             <Text style={[styles.quizValue, {
               color: quiz.user_id == usertop.id ? "#fff" : "#737380",
             }]}>{quiz.description}</Text>
@@ -189,7 +190,7 @@ export default function quiz() {
               style={styles.detailsButton}
               onPress={() => toQuestions(quiz)}
             >
-              <Text style={styles.detailsButtonText}>fazer a atividade</Text>
+              <Text style={styles.detailsButtonText}>Fazer a atividade</Text>
               <Feather name="arrow-right" size={16} color="#6c63ff" />
             </TouchableOpacity>
           </View>

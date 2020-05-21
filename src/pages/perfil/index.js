@@ -129,7 +129,7 @@ export default function registrar() {
 
         <Image source={logoImg} />
         <View style={styles.top}>
-          <Text style={styles.cash}>perfil</Text>
+          <Text style={styles.cash}>Perfil</Text>
         </View>
         <Feather name="chevron-down" size={20} color="#6c63ff" />
 

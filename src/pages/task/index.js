@@ -75,7 +75,7 @@ export default function task() {
         setModalVisible(!modalVisible);
       } else {
         console.log('errou nao selecinou uma quest ou')
-        alert('precisa selecionar 5 question no minimo pra fazer um quiz')
+        alert('Precisa selecionar 6 question no minimo pra fazer um quiz')
       }
 
 
@@ -122,7 +122,7 @@ export default function task() {
     } catch (error) {
       console.log('deu errado')
       setModalVisible(!modalVisible);
-      alert('deu erro na criação do quiz talvez o titulo ja existe')
+      alert('Deu erro na criação do quiz talvez o titulo ja existe')
 
     }
 
@@ -139,12 +139,12 @@ export default function task() {
           //alert('erro na criação do quiz');  
         }
       }
-      alert('quiz criado');
+      alert('Quiz criado');
       setModalVisible(!modalVisible);
       navigateToMenu(usertop);
 
     } catch (error) {
-      alert('erro na criação do quiz');
+      alert('Erro na criação do quiz');
       console.log('deu erro na criação de quiz')
       setModalVisible(!modalVisible);
 
